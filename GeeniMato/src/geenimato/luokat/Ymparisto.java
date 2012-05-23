@@ -7,7 +7,7 @@ package geenimato.luokat;
 import java.util.ArrayList;
 import java.util.HashMap;
 
-/**
+/**Luokka sisältää soluja tietyissä paikoissa, pitää myös kirjaa tietyistä aineista
  *
  * @author henriikka
  */

@@ -8,10 +8,12 @@ import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Random;
 
-/**
+/**luokka, joka sisältää aineita
  *
  * @author henriikka
  */
+
+
 public class Solu {
     
     private ArrayList<Aine> aineet;

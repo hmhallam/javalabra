@@ -7,10 +7,12 @@ package geenimato.luokat;
 import java.util.HashMap;
 import java.util.Random;
 
-/**
+/**Luokka, joka pitää huolta omasta konsentraatiostaan
  *
  * @author henriikka
  */
+
+
 public class Aine {
     
     private String nimi;
