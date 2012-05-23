@@ -11,9 +11,9 @@ import static org.junit.Assert.*;
  *
  * @author henriikka
  */
-public class SoluTest {
+public class YmparistoTest {
     
-    public SoluTest() {
+    public YmparistoTest() {
     }
 
     @BeforeClass
@@ -30,16 +30,6 @@ public class SoluTest {
     
     @After
     public void tearDown() {
-    }
-    
-    @Test 
-    public void oikeaMaaraAineita(){
-        
-    }
-    
-    @Test
-    public void kaikillaInteraktiot(){
-        
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

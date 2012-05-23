@@ -209,6 +209,7 @@ public class Aine {
     public double getKonsentraatio() {
         return konsentraatio;
     }
+    
 
     public void setKonsentraatio(double konsentraatio) {
         this.konsentraatio = konsentraatio;
