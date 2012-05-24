@@ -29,7 +29,9 @@ public class Ymparisto {
     }
     
     public void paivita(HashMap<Aine, Double> uudetKonsentraatiot){
-        //ei ole valmis, täytyy miettiä uusiksi pari juttua..
+        //TODO onko eritettävillä solunsisäistä konsentraatiota. Ympäristön pitää
+        //varmaankin luoda uudet instanssit aineista, jotta ne eivät vaikuta solujen sisällä.
+        //silloin ongelmaksi tulee listan päivitys kun vissiin sekä oliot että viitteet ovat eri
         
     }
     

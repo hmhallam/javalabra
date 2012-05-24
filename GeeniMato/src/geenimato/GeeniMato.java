@@ -4,9 +4,11 @@
  */
 package geenimato;
 
+import geenimato.kayttoliittyma.Tekstikayttoliittyma;
 import geenimato.luokat.Aine;
 import geenimato.luokat.Interaktio;
 import geenimato.luokat.Solu;
+import java.util.Scanner;
 
 
 
@@ -21,17 +23,9 @@ public class GeeniMato {
      */
     public static void main(String[] args) {
         
-        Solu solu = new Solu(0);
-        Aine aine = new Aine("nimi", false, false, 4.0, 3.0, 0.3, Interaktio.EI);
-        aine.setKonsentraatio(5.0);
-        System.out.println(solu.konsentraatioStringit());
-        solu.lisaaAine(aine);
-        System.out.println(solu.konsentraatioStringit());
-        solu.elaAikaYksikko();
-        solu.elaAikaYksikko();
+        Scanner lukija = new Scanner(System.in);
         
-        
-        System.out.println(solu.konsentraatioStringit());
-        // TODO code application logic here
+        Tekstikayttoliittyma liittyma = new Tekstikayttoliittyma(lukija);
+        liittyma.kaynnista();
     }
 }
