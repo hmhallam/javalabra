@@ -113,7 +113,7 @@ public class Aine {
      */
     private double pienempi(double tuotto, Random random){
         double  luku = 1.0;
-        while (luku > tuotto || luku > 0.7){
+        while (luku > tuotto || luku > 0.7 || tuotto-luku < 0.2){
             luku = random.nextDouble();
         }
         return luku;

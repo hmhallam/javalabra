@@ -14,7 +14,7 @@ import java.util.Random;
  */
 
 
-public class Solu {
+public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi päällä oleva geeni pysyvät nollassa..
     
     private ArrayList<Aine> aineet;
     
@@ -86,9 +86,12 @@ public class Solu {
      * 
      * @param aine lisättävä aine
      */
-    public void lisaaAine(Aine aine){
+    public void lisaaAine(Aine aine){ //TODO ineraktioita voitava muokata manuaalisesti
         for (Aine a : aineet){
             aine.setInteraktio(a, randomInteraktio());
+            for (Aine b : aineet){
+                b.setInteraktio(aine, randomInteraktio());
+            }
         }
         aineet.add(aine);
     }

@@ -16,6 +16,7 @@ import java.util.Scanner;
 public class Tekstikayttoliittyma {
     
     private Scanner lukija;
+    private Solu solu;
     
     public Tekstikayttoliittyma(Scanner lukija){
         this.lukija = lukija;
@@ -29,7 +30,8 @@ public class Tekstikayttoliittyma {
                 break;
             }
             
-            hoidaKomento(komento);
+            hoidaSolunLuonti(komento);
+            aikaaEteenPain();
         }
     }
     
@@ -46,7 +48,7 @@ public class Tekstikayttoliittyma {
         return kasaaja.toString();
     }
     
-    private void hoidaKomento(String komento){
+    private void hoidaSolunLuonti(String komento){
         if (komento.equals("arvottu")){
             arvotaan();
         }else if (komento.equals("manuaalinen")){
@@ -57,14 +59,14 @@ public class Tekstikayttoliittyma {
     private void arvotaan(){
         System.out.println("Montako ainetta? (kokonaisluku)");
         int luku = Integer.parseInt(lukija.nextLine());
-        Solu solu = new Solu(luku);
+        this.solu = new Solu(luku);
         System.out.println(solu.toString());
         System.out.println(solu.interaktioTaulukko());
         
     }
     
     private void manuaalinen(){
-        Solu solu = new Solu(0);
+        this.solu = new Solu(0);
     
         while(true){
             System.out.println("Anna nimi: ");
@@ -91,6 +93,22 @@ public class Tekstikayttoliittyma {
         }
         System.out.println(solu.toString());
         System.out.println(solu.interaktioTaulukko()); //TODO myöhemmin lisättävien vaikutukset aiemmin lisättyihin null
+    }
+    
+    public void aikaaEteenPain(){
+        System.out.println("Montako aika-askelta?: ");
+        int luku = Integer.parseInt(lukija.nextLine());
+        System.out.println("kuinka usein printataan konsentraatiot (2 = joka toinen jne): ");
+        int valiaikatieto = Integer.parseInt(lukija.nextLine());
+        int i = 0;
+        while(i < luku){
+            this.solu.elaAikaYksikko();
+            if (i%valiaikatieto == 0){
+                System.out.println(this.solu.konsentraatioStringit());
+            }
+            i++;
+        }
+        System.out.println(solu.toString());
     }
     
 }
