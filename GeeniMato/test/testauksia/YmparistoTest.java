@@ -4,6 +4,7 @@
  */
 package testauksia;
 
+import geenimato.luokat.Solu;
 import geenimato.luokat.Ymparisto;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -38,6 +39,13 @@ public class YmparistoTest {
     @Test
     public void eiAineitaAlussa(){
         assertTrue(ymparisto.getAineet().isEmpty());
+    }
+    
+    @Test
+    public void AineitaOnKunAnnetaan(){
+        Solu solu = new Solu(9);
+        ymparisto.setAineet(solu.getAineet());
+        assertTrue(ymparisto.getAineet().size() == 9);
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:
