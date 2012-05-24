@@ -4,6 +4,7 @@
  */
 package testauksia;
 
+import geenimato.luokat.Solu;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
  * @author henriikka
  */
 public class SoluTest {
+    private Solu solu;
     
     public SoluTest() {
     }
@@ -26,6 +28,7 @@ public class SoluTest {
     
     @Before
     public void setUp() {
+        this.solu = new Solu(7);
     }
     
     @After
@@ -34,7 +37,7 @@ public class SoluTest {
     
     @Test 
     public void oikeaMaaraAineita(){
-        
+        assertTrue(solu.getAineet().size() == 7);
     }
     
     @Test

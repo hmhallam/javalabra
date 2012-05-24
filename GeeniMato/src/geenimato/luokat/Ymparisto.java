@@ -12,6 +12,7 @@ import java.util.HashMap;
  * @author henriikka
  */
 public class Ymparisto {
+
     
     private ArrayList<Aine> aineet;
     
@@ -31,4 +32,13 @@ public class Ymparisto {
         //ei ole valmis, täytyy miettiä uusiksi pari juttua..
         
     }
+    
+    public ArrayList<Aine> getAineet() {
+        return aineet;
+    }
+
+    public void setAineet(ArrayList<Aine> aineet) {
+        this.aineet = aineet;
+    }
+    
 }

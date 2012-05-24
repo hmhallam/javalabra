@@ -4,6 +4,7 @@
  */
 package testauksia;
 
+import geenimato.luokat.Ymparisto;
 import org.junit.*;
 import static org.junit.Assert.*;
 
@@ -12,6 +13,7 @@ import static org.junit.Assert.*;
  * @author henriikka
  */
 public class YmparistoTest {
+    private Ymparisto ymparisto;
     
     public YmparistoTest() {
     }
@@ -26,10 +28,16 @@ public class YmparistoTest {
     
     @Before
     public void setUp() {
+        this.ymparisto = new Ymparisto();
     }
     
     @After
     public void tearDown() {
+    }
+    
+    @Test
+    public void eiAineitaAlussa(){
+        assertTrue(ymparisto.getAineet().isEmpty());
     }
     // TODO add test methods here.
     // The methods must be annotated with annotation @Test. For example:

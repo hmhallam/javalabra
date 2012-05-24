@@ -42,7 +42,7 @@ public class Aine {
         this.geeni = geeni;
         this.eritettava = eritettava;
         this.konsentraatio = 0;
-        this.maksimikonsentraatio = 5.0;
+        this.maksimikonsentraatio = 10.0;
         this.tuotto = tuotto;
         this.hajotus = hajotus;
         this.kynnysarvo = kynnysarvo;

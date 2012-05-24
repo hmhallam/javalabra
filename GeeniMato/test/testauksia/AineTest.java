@@ -52,17 +52,8 @@ public class AineTest {
     }
     
     @Test
-    public void konsentraatioEiNegatiivinen(){
-        Aine aine = new Aine("nimi", true, false, 1.0, 2.0, 0.3, Interaktio.EI);
-        solu.lisaaAine(aine);
-        assertTrue(aine.getKonsentraatio() == 0.0);
-        solu.elaAikaYksikko();
-        assertTrue(aine.getKonsentraatio() == 0.0);
-    }
-    
-    @Test
     public void konsentraatioPieneneeKunGeeniPois(){
-        Aine aine = new Aine("nimi", false, false, 1.0, 4.0, 0.3, Interaktio.EI);
+        Aine aine = new Aine("nimi", false, false, 4.0, 3.0, 0.3, Interaktio.EI);
         aine.setKonsentraatio(5.0);
         solu.lisaaAine(aine);
         assertTrue(aine.getKonsentraatio() == 5.0);
