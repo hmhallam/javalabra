@@ -4,6 +4,8 @@
  */
 package geenimato.kayttoliittyma;
 
+import geenimato.luokat.Aine;
+import geenimato.luokat.Interaktio;
 import geenimato.luokat.Solu;
 import java.util.Scanner;
 
@@ -37,7 +39,7 @@ public class Tekstikayttoliittyma {
         kasaaja.append("\n");
         kasaaja.append("\n");
         kasaaja.append("Kirjoita [arvottu], jos et halua määritellä ominaisuuksia manuaalisesti.");
-        kasaaja.append("\n");ss
+        kasaaja.append("\n");
         kasaaja.append("Kirjoita [manuaalinen], jos haluat lisätä aineita yksi kerrallaan");
         kasaaja.append("\n");
         
@@ -62,10 +64,33 @@ public class Tekstikayttoliittyma {
     }
     
     private void manuaalinen(){
-        System.out.println("Kirjoita soluun lisättävän aineen parametrit pilkuilla eroteltuna"); //TODO ota selvää miten syöte saadaan ängettyä konstruktoriin..
+        Solu solu = new Solu(0);
+    
         while(true){
+            System.out.println("Anna nimi: ");
+            String nimi = lukija.nextLine();
+            System.out.println("Onko geeni päällä? (true/false): ");
+            boolean geeni = Boolean.valueOf(lukija.nextLine());
+            System.out.println("Eritetäänkö ainetta solusta ympäristöön? (true/false): ");
+            boolean eritys = Boolean.valueOf(lukija.nextLine());
+            System.out.println("Tuottonopeus (0.0-10.0): ");
+            double tuotto = Double.valueOf(lukija.nextLine());
+            System.out.println("Hajotusnopeus (0.0-10.0): ");
+            double hajotus = Double.valueOf(lukija.nextLine());
+            System.out.println("Kynnysarvo (0.0-10.0): ");
+            double kynnys = Double.valueOf(lukija.nextLine());
+            System.out.println("Ineraktio itsensä kanssa: ");
+            Interaktio interaktio = Interaktio.valueOf(lukija.nextLine());
             
+            solu.lisaaAine(new Aine(nimi, geeni, eritys, tuotto, hajotus, kynnys, interaktio));
+            
+            System.out.println("Haluatko lisätä vielä aineita? (kyllä/ei)");
+            if (lukija.nextLine().equals("ei")){
+                break;
+            }
         }
+        System.out.println(solu.toString());
+        System.out.println(solu.interaktioTaulukko()); //TODO myöhemmin lisättävien vaikutukset aiemmin lisättyihin null
     }
     
 }
