@@ -16,7 +16,7 @@ import java.util.Scanner;
  *
  * @author henriikka
  */
-public class GeeniMato {
+public class GeeniMato { //TODO virheellisten syötteiden käsittely
 
     /**
      * @param args the command line arguments

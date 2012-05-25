@@ -58,6 +58,8 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
         return lista;
     }
     
+    
+    
     /** interaktioarpoja, 20% ettei ineraktiota ole. Aktivaatiolla ja inhibitiolla yhtä suuret todennäköisyydet
      * 
      * 
@@ -95,6 +97,8 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
         }
         aineet.add(aine);
     }
+    
+    
     
     /** solun aineiden sisäinen tila muttuu
      * Geenit päälle/pois, aineiden pitoisuudet muuttuvat.

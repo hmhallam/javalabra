@@ -7,6 +7,7 @@ package geenimato.kayttoliittyma;
 import geenimato.luokat.Aine;
 import geenimato.luokat.Interaktio;
 import geenimato.luokat.Solu;
+import java.util.ArrayList;
 import java.util.Scanner;
 
 /**
@@ -31,6 +32,7 @@ public class Tekstikayttoliittyma {
             }
             
             hoidaSolunLuonti(komento);
+            muokkaus();
             aikaaEteenPain();
         }
     }
@@ -91,10 +93,37 @@ public class Tekstikayttoliittyma {
                 break;
             }
         }
-        System.out.println(solu.toString());
-        System.out.println(solu.interaktioTaulukko()); //TODO myöhemmin lisättävien vaikutukset aiemmin lisättyihin null
+            kysyInteraktiot();
+            System.out.println(solu.toString());
+            System.out.println(solu.interaktioTaulukko()); 
+        }
+       
+    private void kysyInteraktiot(){
+        ArrayList<Aine> aineet = this.solu.getAineet();
+        for (Aine a : aineet){
+            for (Aine b : aineet){
+                if (a.equals(b) == false){
+                    System.out.println("Miten " + b.getNimi() + "vaikuttaa aineeseen " + a.getNimi() + "?: ");
+                    Interaktio vaikutus = Interaktio.valueOf(lukija.nextLine());
+                    a.setInteraktio(b, vaikutus);
+                }
+            }
+        }
     }
     
+    public void muokkaus(){
+        System.out.println("Haluatko muokata jonkin aineen ominaisuuksia? (kyllä/ei)");
+        String komento = lukija.nextLine();
+        ArrayList<Aine> lista = solu.getAineet();
+        while (true){
+            if (komento.equals("ei")) {
+                break;
+            }else{
+                System.out.println("Anna muokattavan aineen nimi: "); //TODO miten saadaan yksittäinen aine helposti käsiteltäväksi, kun ne eivät ole hashmapissa? käytäisiinkö vain kaikki läpi?
+            }
+        }
+    }
+
     public void aikaaEteenPain(){
         System.out.println("Montako aika-askelta?: ");
         int luku = Integer.parseInt(lukija.nextLine());
