@@ -17,13 +17,15 @@ import java.util.Random;
 public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi päällä oleva geeni pysyvät nollassa..
     
     private ArrayList<Aine> aineet;
+    private int aika;
     
     /** Solu sisältää aineita, jotka se voi luoda itse tai voi luoda tyhjän solun ja asettaa sinne aineita
      * 
      * @param aineidenMaara montako ainetta solu luo konstruktorissaan
      */
     public Solu(int aineidenMaara){
-        this.aineet = luoAineet(aineidenMaara);   
+        this.aineet = luoAineet(aineidenMaara);
+        this.aika = 0;
     }
     
     /** Luo listan soluista ja täyttää sen aineilla, jotka luodaan käyttäen aineen random-konstruktoria
@@ -84,11 +86,29 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
         return aineet;
     }
     
+    public HashMap<String, Aine> nimiMap(){
+        HashMap<String, Aine> map = new HashMap<String, Aine>();
+        for (Aine aine : aineet){
+            map.put(aine.getNimi(), aine);
+        }
+        return map;
+    }
+    
+    public ArrayList<Aine> kopioiEritettavat(){
+        ArrayList<Aine> eritettavat = new ArrayList<Aine>();
+        for (Aine aine : aineet){
+            if (aine.isEritettava()){
+                eritettavat.add(aine);
+            }
+        }
+        return eritettavat;
+    }
+    
     /** Soluun voidaan lisätä aineita, metodi huolehtii lisäämisestä ja interaktioiden lisäämisestä
      * 
      * @param aine lisättävä aine
      */
-    public void lisaaAine(Aine aine){ //TODO ineraktioita voitava muokata manuaalisesti
+    public void lisaaAine(Aine aine){ 
         for (Aine a : aineet){
             aine.setInteraktio(a, randomInteraktio());
             for (Aine b : aineet){
@@ -97,15 +117,18 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
         }
         aineet.add(aine);
     }
-    
-    
-    
+   
     /** solun aineiden sisäinen tila muttuu
      * Geenit päälle/pois, aineiden pitoisuudet muuttuvat.
      */
     public void elaAikaYksikko(){
         geeniStatukset(); //geenit päälle/pois
         proteiininTuotto(); //päivitetään proteiinikonsentraatiot
+        this.aika += 1;
+    }
+    
+    public int getAika(){
+        return this.aika;
     }
     
     /**muutetaan aineiden geenien statukset riippuen niihin vaikuttavien aineiden konsentraatioista

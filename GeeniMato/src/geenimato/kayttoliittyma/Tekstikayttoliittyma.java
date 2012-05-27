@@ -8,7 +8,9 @@ import geenimato.luokat.Aine;
 import geenimato.luokat.Interaktio;
 import geenimato.luokat.Solu;
 import java.util.ArrayList;
+import java.util.HashMap;
 import java.util.Scanner;
+import org.jfree.ui.RefineryUtilities;
 
 /**
  *
@@ -18,6 +20,7 @@ public class Tekstikayttoliittyma {
     
     private Scanner lukija;
     private Solu solu;
+    private Datankasittelija kasittelija;
     
     public Tekstikayttoliittyma(Scanner lukija){
         this.lukija = lukija;
@@ -32,8 +35,10 @@ public class Tekstikayttoliittyma {
             }
             
             hoidaSolunLuonti(komento);
+            this.kasittelija = new Datankasittelija(this.solu);
             muokkaus();
             aikaaEteenPain();
+            plottaa();
         }
     }
     
@@ -55,11 +60,17 @@ public class Tekstikayttoliittyma {
             arvotaan();
         }else if (komento.equals("manuaalinen")){
             manuaalinen();
+        }else{
+            System.out.println("Et kirjoittanut oikeaa komentoa..");
+            System.out.println("Vaihtoehdot: \n[arvottu], luo solun jossa arvotut ominaisuudet"
+                    + "\n[manuaalinen], luo solun kysellen ominaisuuksia");
+            String uusiKomento = lukija.nextLine();
+            hoidaSolunLuonti(uusiKomento);
         }
     }
     
     private void arvotaan(){
-        System.out.println("Montako ainetta? (kokonaisluku)");
+        System.out.println("Montako ainetta? (kokonaisluku)"); //TODO testaa syötteen oikeellisuus
         int luku = Integer.parseInt(lukija.nextLine());
         this.solu = new Solu(luku);
         System.out.println(solu.toString());
@@ -67,7 +78,7 @@ public class Tekstikayttoliittyma {
         
     }
     
-    private void manuaalinen(){
+    private void manuaalinen(){ //testaa kaikkien syötteiden oikeellisuus
         this.solu = new Solu(0);
     
         while(true){
@@ -114,14 +125,22 @@ public class Tekstikayttoliittyma {
     public void muokkaus(){
         System.out.println("Haluatko muokata jonkin aineen ominaisuuksia? (kyllä/ei)");
         String komento = lukija.nextLine();
-        ArrayList<Aine> lista = solu.getAineet();
         while (true){
             if (komento.equals("ei")) {
                 break;
             }else{
-                System.out.println("Anna muokattavan aineen nimi: "); //TODO miten saadaan yksittäinen aine helposti käsiteltäväksi, kun ne eivät ole hashmapissa? käytäisiinkö vain kaikki läpi?
+                HashMap<String, Aine> map = solu.nimiMap();
+                System.out.println("Anna muokattavan aineen nimi: "); 
+                String nimi = lukija.nextLine();
+                Aine muokattava = map.get(nimi);
+                mitaMuokataan(muokattava);
             }
         }
+    }
+    
+    private void mitaMuokataan(Aine aine){
+        System.out.println("Mitä ominaisuutta haluat muokata?\n"
+                + "");
     }
 
     public void aikaaEteenPain(){
@@ -132,12 +151,20 @@ public class Tekstikayttoliittyma {
         int i = 0;
         while(i < luku){
             this.solu.elaAikaYksikko();
+            this.kasittelija.paivita();
             if (i%valiaikatieto == 0){
                 System.out.println(this.solu.konsentraatioStringit());
             }
             i++;
         }
         System.out.println(solu.toString());
+    }
+    
+    public void plottaa(){
+        Plotti plotti = new Plotti("kokeillaan", kasittelija);
+        plotti.pack();
+        RefineryUtilities.centerFrameOnScreen(plotti);
+        plotti.setVisible(true);
     }
     
 }

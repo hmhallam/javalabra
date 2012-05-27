@@ -75,7 +75,7 @@ public class Aine {
         this.maksimikonsentraatio = 10.0;
         this.tuotto = isompi(random);
         this.hajotus = pienempi(this.tuotto, random);
-        this.kynnysarvo = random.nextDouble();
+        this.kynnysarvo = 10*random.nextDouble();
         omaInteraktio(Interaktio.EI);
     }
     

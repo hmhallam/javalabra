@@ -15,18 +15,13 @@ public class Ymparisto {
 
     
     private ArrayList<Aine> aineet;
+    private Solu solu;
     
-    public Ymparisto(){
-        this.aineet = new ArrayList<Aine>();
+    public Ymparisto(Solu solu){
+        this.solu = solu;
+        this.aineet = solu.kopioiEritettavat();
     }
     
-    public void ainelista(ArrayList<Aine> lista){
-        for (Aine a : lista){
-            if (a.isEritettava()){
-                this.aineet.add(a);
-            }
-        }
-    }
     
     public void paivita(HashMap<Aine, Double> uudetKonsentraatiot){
         //TODO onko eritettävillä solunsisäistä konsentraatiota. Ympäristön pitää
