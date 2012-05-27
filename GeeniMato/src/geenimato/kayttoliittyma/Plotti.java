@@ -4,14 +4,11 @@
  */
 package geenimato.kayttoliittyma;
 
-import geenimato.luokat.Aine;
-import java.util.HashMap;
 import org.jfree.chart.ChartFactory;
 import org.jfree.chart.ChartPanel;
 import org.jfree.chart.JFreeChart;
 import org.jfree.chart.plot.PlotOrientation;
 import org.jfree.data.xy.XYDataset;
-import org.jfree.data.xy.XYSeries;
 import org.jfree.ui.ApplicationFrame;
 
 /**
@@ -42,7 +39,4 @@ public class Plotti extends ApplicationFrame {
         setContentPane(chartPanel);
 
     }
-    
-    
-    
 }

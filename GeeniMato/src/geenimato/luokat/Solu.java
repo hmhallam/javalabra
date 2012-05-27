@@ -70,9 +70,9 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
     private Interaktio randomInteraktio(){
         Random random = new Random();
         double luku = random.nextDouble();
-        if (luku <= 0.2){
+        if (luku <= 0.6){
             return Interaktio.EI;
-        }else if (luku <= 0.7){
+        }else if (luku <= 0.8){
             return Interaktio.AKTIVAATIO;
         }else{
            return Interaktio.INHIBITIO; 
@@ -141,7 +141,9 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
                  aine.setGeeni(true);
             }else if (yhteisvaikutus < 0){
                 aine.setGeeni(false);
-            }
+           } //else{
+//                aine.setGeeni(true);
+//            }
         }
     }
     
