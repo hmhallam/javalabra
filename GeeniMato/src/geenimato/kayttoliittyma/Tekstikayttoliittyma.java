@@ -51,12 +51,16 @@ public class Tekstikayttoliittyma {
         kasaaja.append("\n");
         kasaaja.append("Kirjoita [manuaalinen], jos haluat lisätä aineita yksi kerrallaan");
         kasaaja.append("\n");
+        kasaaja.append("Kirjoita [lopeta], jos haluat lopettaa ohjelman suorituksen");
+        kasaaja.append("\n");
         
         return kasaaja.toString();
     }
     
     private void hoidaSolunLuonti(String komento){
-        if (komento.equals("arvottu")){
+        if (komento.equals("lopeta")){
+            
+        }else if (komento.equals("arvottu")){
             arvotaan();
         }else if (komento.equals("manuaalinen")){
             manuaalinen();

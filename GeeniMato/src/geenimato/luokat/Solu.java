@@ -14,7 +14,7 @@ import java.util.Random;
  */
 
 
-public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi päällä oleva geeni pysyvät nollassa..
+public class Solu { 
     
     private ArrayList<Aine> aineet;
     private int aika;
@@ -65,17 +65,17 @@ public class Solu { //TODO aineet, joiden geeni ei päällä ja joita ei aktivoi
     /** interaktioarpoja, 20% ettei ineraktiota ole. Aktivaatiolla ja inhibitiolla yhtä suuret todennäköisyydet
      * 
      * 
-     * @return 20% kerroista EI, 50% kerroista AKTIVAATIO, 30% kerroista INHIBITIO 
+     * @return Interaktiot tietyillä todennäköisyyksillä
      */
     private Interaktio randomInteraktio(){
         Random random = new Random();
         double luku = random.nextDouble();
-        if (luku <= 0.6){
-            return Interaktio.EI;
-        }else if (luku <= 0.8){
+        if (luku <= 0.2){
+            return Interaktio.INHIBITIO;
+        }else if (luku <= 0.4){
             return Interaktio.AKTIVAATIO;
         }else{
-           return Interaktio.INHIBITIO; 
+           return Interaktio.EI; 
         }
         
     }

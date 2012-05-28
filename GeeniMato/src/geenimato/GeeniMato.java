@@ -5,9 +5,6 @@
 package geenimato;
 
 import geenimato.kayttoliittyma.Tekstikayttoliittyma;
-import geenimato.luokat.Aine;
-import geenimato.luokat.Interaktio;
-import geenimato.luokat.Solu;
 import java.util.Scanner;
 
 
@@ -16,7 +13,7 @@ import java.util.Scanner;
  *
  * @author henriikka
  */
-public class GeeniMato { //TODO virheellisten syötteiden käsittely
+public class GeeniMato { 
 
     /**
      * @param args the command line arguments
