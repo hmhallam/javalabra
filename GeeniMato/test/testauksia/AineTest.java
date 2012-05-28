@@ -47,7 +47,7 @@ public class AineTest {
     }
     
     @Test
-    public void randomGeeni(){ // nää vois jakaa omiin testeihin.. nuo on kuitenki omia metodeja 
+    public void randomGeeni(){
         int i = 0;
         double paalla = 0;
         double poissa = 0;
@@ -82,7 +82,7 @@ public class AineTest {
         assertTrue(suhde < 4.5 && suhde > 3.5);
      }
      
-     @Test
+    @Test
     public void yksittainenInteraktio(){
         Aine aine1 = new Aine("nimi1");
         assertTrue(aine1.getInteraktio(aine1).equals(Interaktio.EI));
@@ -95,15 +95,49 @@ public class AineTest {
         Aine aine3 = new Aine("nimi", true, false, 3.0, 0.1, 0.3, Interaktio.AKTIVAATIO);
         assertTrue(aine3.getInteraktio(aine3).equals(Interaktio.AKTIVAATIO));
     }
-        //konsentraatio alussa nolla
-        //maksimi on 10
-        //tuottoväli 0.3 -1.0
-        //hajotus välillä 0.0 -0.7, tuottoa vähintään 0.2 pienempi
-        //kynnys keskimäärin 0.5
-        
-
+     
     @Test
-    public void parametritonKonstruktori(){ //tuoton ja hajotuksen voisi tarkistaa, mutta pitää tehdä getterit
+    public void randomTuottoVali(){
+        int i = 0;
+        while (i < 1000){
+            Aine aine = new Aine("nimi", random);
+            assertTrue(aine.getTuotto() >= 0.3 && aine.getTuotto() < 1.0);
+            i++;
+        }
+    }
+    
+    @Test
+    public void randomHajotusVali(){
+        int i = 0;
+        while (i < 1000){
+            Aine aine = new Aine("nimi", random);
+            assertTrue(aine.getHajotus() <= 0.7 &&
+                    aine.getHajotus() >= 0.0 &&
+                    (aine.getTuotto()-aine.getHajotus() >= 0.2));
+            i++;
+        }
+    }
+    
+    @Test
+    public void randomKynnys(){ //TODO ei toimi..
+        int i = 0;
+        double yliPuolen = 0;
+        double allePuolen = 0;
+        while (i < 10000){
+            Aine aine = new Aine("nimi", random);
+            if (aine.getKynnysarvo() > 0.5){
+                yliPuolen++;
+            }else if (aine.getKynnysarvo() < 0.5){
+                allePuolen++;
+            }
+            i++;
+        }
+        double luku = yliPuolen/allePuolen;
+        assertTrue(luku < 1.5 && luku > 0.5);
+    }
+    
+    @Test
+    public void parametritonKonstruktori(){ 
         Aine aine = new Aine("nimi");
         assertTrue(aine.getNimi().equals("nimi"));
         assertTrue(aine.getGeeni() == false);

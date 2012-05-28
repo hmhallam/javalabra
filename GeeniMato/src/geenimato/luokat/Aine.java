@@ -234,5 +234,31 @@ public class Aine {
     public void setKynnysarvo(double kynnysarvo) {
         this.kynnysarvo = kynnysarvo;
     }
+
+    public double getHajotus() {
+        return hajotus;
+    }
+
+    public void setHajotus(double hajotus) {
+        this.hajotus = hajotus;
+    }
+
+    public double getMaksimikonsentraatio() {
+        return maksimikonsentraatio;
+    }
+
+    public void setMaksimikonsentraatio(double maksimikonsentraatio) {
+        this.maksimikonsentraatio = maksimikonsentraatio;
+    }
+
+    public double getTuotto() {
+        return tuotto;
+    }
+
+    public void setTuotto(double tuotto) {
+        this.tuotto = tuotto;
+    }
+    
+    
     
 }
