@@ -22,11 +22,11 @@ public class Ymparisto {
         this.aineet = solu.kopioiEritettavat();
     }
     
-    
+    /** tarkoituksena on ottaa solulta talteen tieto uusista konsentraatioista,
+     * ja mahdollisesti asettaa solun konsentraatiot nolliksi.
+     * @param uudetKonsentraatiot 
+     */
     public void paivita(HashMap<Aine, Double> uudetKonsentraatiot){
-        //TODO onko eritettävillä solunsisäistä konsentraatiota. Ympäristön pitää
-        //varmaankin luoda uudet instanssit aineista, jotta ne eivät vaikuta solujen sisällä.
-        //silloin ongelmaksi tulee listan päivitys kun vissiin sekä oliot että viitteet ovat eri
         
     }
     

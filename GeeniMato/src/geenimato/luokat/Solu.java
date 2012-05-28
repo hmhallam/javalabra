@@ -65,7 +65,7 @@ public class Solu {
     /** interaktioarpoja, 20% ettei ineraktiota ole. Aktivaatiolla ja inhibitiolla yhtä suuret todennäköisyydet
      * 
      * 
-     * @return Interaktiot tietyillä todennäköisyyksillä
+     * @return Interaktio tietyillä todennäköisyyksillä
      */
     private Interaktio randomInteraktio(){
         Random random = new Random();
@@ -86,6 +86,10 @@ public class Solu {
         return aineet;
     }
     
+    /**mappaa aineiden nimet ja itse aineet
+     * 
+     * @return HashMap<String, Aine>
+     */
     public HashMap<String, Aine> nimiMap(){
         HashMap<String, Aine> map = new HashMap<String, Aine>();
         for (Aine aine : aineet){
@@ -94,7 +98,11 @@ public class Solu {
         return map;
     }
     
-    public ArrayList<Aine> kopioiEritettavat(){
+    /**Antaa listan aineista, joita solu erittää
+     * 
+     * @return ArrayList<Aine>
+     */
+    public ArrayList<Aine> kopioiEritettavat(){ //TODO täytyy antaa eri instanssit
         ArrayList<Aine> eritettavat = new ArrayList<Aine>();
         for (Aine aine : aineet){
             if (aine.isEritettava()){

@@ -19,6 +19,11 @@ public class Plotti extends ApplicationFrame {
     
     private Datankasittelija kasittelija;
     
+    /**piirtää kaikille solun aineille konsentraatiokäyrän ajan funktiona
+     * 
+     * @param title 
+     * @param kasittelija sisältää datasetin jokaiselle aineelle
+     */
     public Plotti(String title, Datankasittelija kasittelija) {
         super(title);
         this.kasittelija = kasittelija;

@@ -165,7 +165,7 @@ public class Tekstikayttoliittyma {
     }
     
     public void plottaa(){
-        Plotti plotti = new Plotti("kokeillaan", kasittelija);
+        Plotti plotti = new Plotti("loppuplot", kasittelija);
         plotti.pack();
         RefineryUtilities.centerFrameOnScreen(plotti);
         plotti.setVisible(true);

@@ -20,12 +20,20 @@ public class Datankasittelija {
     private HashMap<Aine, XYSeries> map;
     private Solu solu;
     
+    /** pitää sisällään konsentraatiodataa
+     * 
+     * @param solu tämän sisältämistä aineista jokaisesta tehdään oma dataset
+     */
     public Datankasittelija(Solu solu){
         this.solu = solu;
         this.map = new HashMap<Aine, XYSeries>();
         this.konsentraatiot = luoXYSeries();
     }
     
+    /**datasäiliöiden luomismetodi
+     * 
+     * @return XYSeriesCollection
+     */
     private XYSeriesCollection luoXYSeries(){
         XYSeriesCollection data = new XYSeriesCollection();
         for (Aine a : solu.getAineet()){
@@ -37,6 +45,9 @@ public class Datankasittelija {
         return data;
     }
     
+    /** lisää joka aineelle datapisteen, jossa aika ja aineen konsentraatio
+     * 
+     */
     public void paivita(){
         for (Aine a : solu.getAineet()){
             XYSeries series = map.get(a);
@@ -44,6 +55,10 @@ public class Datankasittelija {
         }
     }
     
+    /**Palauttaa kaikki datasetit kokoelmassa
+     * 
+     * @return XYSeriesCollection
+     */
     public XYSeriesCollection getKonsentraatiot(){
         return this.konsentraatiot;
     }
