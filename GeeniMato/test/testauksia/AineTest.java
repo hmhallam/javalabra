@@ -173,13 +173,10 @@ public class AineTest {
     
     @Test
     public void lyhytMerkkijonoesitys(){
-        
+        Aine aine = new Aine("nimi", false, false, 4.0, 3.0, 0.3, Interaktio.EI);
+        assertTrue(aine.konsentraatioString().equals("nimi: 0.00"));
     }
     
-    @Test
-    public void pitkaMerkkijonoesitys(){
-        
-    }
     // add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //

@@ -5,6 +5,8 @@
 package geenimato;
 
 import geenimato.kayttoliittyma.Tekstikayttoliittyma;
+import geenimato.luokat.Aine;
+import geenimato.luokat.Interaktio;
 import java.util.Scanner;
 
 
@@ -20,9 +22,12 @@ public class GeeniMato {
      */
     public static void main(String[] args) {
         
-        Scanner lukija = new Scanner(System.in);
+        Aine aine = new Aine("nimi", false, false, 4.0, 3.0, 0.3, Interaktio.EI);
+        System.out.println(aine.toString());
         
-        Tekstikayttoliittyma liittyma = new Tekstikayttoliittyma(lukija);
-        liittyma.kaynnista();
+//        Scanner lukija = new Scanner(System.in);
+//        
+//        Tekstikayttoliittyma liittyma = new Tekstikayttoliittyma(lukija);
+//        liittyma.kaynnista();
     }
 }

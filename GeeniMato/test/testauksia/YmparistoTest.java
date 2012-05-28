@@ -4,7 +4,6 @@
  */
 package testauksia;
 
-import geenimato.luokat.Solu;
 import geenimato.luokat.Ymparisto;
 import org.junit.*;
 import static org.junit.Assert.*;
@@ -13,7 +12,7 @@ import static org.junit.Assert.*;
  *
  * @author henriikka
  */
-public class YmparistoTest {
+public class YmparistoTest { //TODO mieti, mitä ympäristö oikeasti tekee
     private Ymparisto ymparisto;
     
     public YmparistoTest() {
@@ -41,13 +40,8 @@ public class YmparistoTest {
         //assertTrue(ymparisto.getAineet().isEmpty());
     }
     
-    @Test
-    public void AineitaOnKunAnnetaan(){ //testi kuuluu solun testeihin
-        //Solu solu = new Solu(9);
-        //ymparisto.setAineet(solu.getAineet());
-        //assertTrue(ymparisto.getAineet().size() == 9);
-    }
-    // TODO add test methods here.
+    
+    //  add test methods here.
     // The methods must be annotated with annotation @Test. For example:
     //
     // @Test
