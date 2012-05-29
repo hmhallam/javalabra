@@ -14,7 +14,7 @@ import java.util.Random;
  */
 
 
-public class Solu { 
+public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa testaamista
     
     private ArrayList<Aine> aineet;
     private int aika;
@@ -38,7 +38,7 @@ public class Solu {
         Random random = new Random();
         ArrayList<Aine> lista = new ArrayList<Aine>();
         int i = 1;
-        while (i < maara + 1){ 
+        while (i <= maara){ 
             lista.add(new Aine("Aine" + i, random));
             i++;
         }
@@ -48,7 +48,7 @@ public class Solu {
     
     /** käy läpi ainelistan, asettaa sinne kaikki interaktiot (myös aineen interaktion itsensä kanssa, joka alunperin oli EI
      * 
-     * @param lista iilman interaktioita
+     * @param lista ilman interaktioita
      * @return lista ineraktioilla
      */
     private ArrayList<Aine> luoInteraktiot(ArrayList<Aine> lista){
@@ -198,7 +198,7 @@ public class Solu {
      * @return taulukko, jossa näkyy aineiden väliset interaktiot
      */
     
-    public String interaktioTaulukko(){
+    public String interaktioTaulukko(){ //TODO lyhennä metodia apumetodeilla
         StringBuilder kasaaja = new StringBuilder();
         kasaaja.append("     ");
         for (Aine a : aineet){

@@ -31,7 +31,7 @@ public class Tekstikayttoliittyma {
         while(true){
             String komento = lukija.nextLine();
             if (komento.equals("lopeta")) {
-                break;
+                System.exit(0);
             }
             
             hoidaSolunLuonti(komento);
@@ -59,15 +59,16 @@ public class Tekstikayttoliittyma {
     
     private void hoidaSolunLuonti(String komento){
         if (komento.equals("lopeta")){
-            
-        }else if (komento.equals("arvottu")){
+            System.exit(0);
+        }if (komento.equals("arvottu")){
             arvotaan();
         }else if (komento.equals("manuaalinen")){
             manuaalinen();
         }else{
             System.out.println("Et kirjoittanut oikeaa komentoa..");
             System.out.println("Vaihtoehdot: \n[arvottu], luo solun jossa arvotut ominaisuudet"
-                    + "\n[manuaalinen], luo solun kysellen ominaisuuksia");
+                    + "\n[manuaalinen], luo solun kysellen ominaisuuksia"
+                    +"\n[lopeta], lopettaa ohjelman suorituksen");
             String uusiKomento = lukija.nextLine();
             hoidaSolunLuonti(uusiKomento);
         }
@@ -75,52 +76,144 @@ public class Tekstikayttoliittyma {
     
     private void arvotaan(){
         System.out.println("Montako ainetta? (kokonaisluku)"); //TODO testaa syötteen oikeellisuus
-        int luku = Integer.parseInt(lukija.nextLine());
-        this.solu = new Solu(luku);
-        System.out.println(solu.toString());
-        System.out.println(solu.interaktioTaulukko());
+        try {
+            int luku = Integer.parseInt(lukija.nextLine());
+            if (luku >= 0){
+                this.solu = new Solu(luku);
+                System.out.println(solu.toString());
+                System.out.println(solu.interaktioTaulukko()); 
+            }else{
+                System.out.println("Annoit negatiivisen luvun, ei käy semmoinen");
+                arvotaan();
+            }
+            
+        }catch (Exception e){
+            System.out.println("Kysyttiin kokonaislukua..");
+            arvotaan();
+        }
+        
         
     }
     
-    private void manuaalinen(){ //testaa kaikkien syötteiden oikeellisuus
+    private void manuaalinen(){ //testaa kaikkien syötteiden oikeellisuus, koko juttu try-catchin sisään. Jaa metodia pienempiin osiin
         this.solu = new Solu(0);
-    
-        while(true){
-            System.out.println("Anna nimi: ");
-            String nimi = lukija.nextLine();
-            System.out.println("Onko geeni päällä? (true/false): ");
-            boolean geeni = Boolean.valueOf(lukija.nextLine());
-            System.out.println("Eritetäänkö ainetta solusta ympäristöön? (true/false): ");
-            boolean eritys = Boolean.valueOf(lukija.nextLine());
-            System.out.println("Tuottonopeus (0.0-10.0): ");
-            double tuotto = Double.valueOf(lukija.nextLine());
-            System.out.println("Hajotusnopeus (0.0-10.0): ");
-            double hajotus = Double.valueOf(lukija.nextLine());
-            System.out.println("Kynnysarvo (0.0-10.0): ");
-            double kynnys = Double.valueOf(lukija.nextLine());
-            System.out.println("Ineraktio itsensä kanssa: ");
-            Interaktio interaktio = Interaktio.valueOf(lukija.nextLine());
-            
-            solu.lisaaAine(new Aine(nimi, geeni, eritys, tuotto, hajotus, kynnys, interaktio));
-            
+        try {
+            while(true){
+            Aine aine = kyseleTiedot();
+            solu.lisaaAine(aine);
             System.out.println("Haluatko lisätä vielä aineita? (kyllä/ei)");
+            
             if (lukija.nextLine().equals("ei")){
-                break;
+                break; 
             }
+            }
+        } catch (Exception e){
+            System.out.println("Vääränlainen syöte " + e);
+            manuaalinen(); //TODO nyt vain keskeytetään väärän syötteen kohdalla ja mennään takas alkuun
         }
             kysyInteraktiot();
             System.out.println(solu.toString());
             System.out.println(solu.interaktioTaulukko()); 
         }
+    
+    private Aine kyseleTiedot(){
+        String nimi = kysyNimi();
+        boolean geeni = geeniStatus();
+        boolean eritys = eritetaanko();     
+        double tuotto = tuottoNopeus();
+        double hajotus = hajotusNopeus();
+        double kynnys = kynnysArvo();  
+        Interaktio interaktio = omaInteraktio();
+            
+        Aine aine = new Aine(nimi, geeni, eritys, tuotto, hajotus, kynnys, interaktio);
+        return aine;
+    }
+    
+    private String kysyNimi(){ //voisi tarkistaa, onko solussa jo samannimistä..
+        System.out.println("Anna nimi: ");
+        return lukija.nextLine(); 
+    }
+    
+    private boolean geeniStatus(){
+        try{
+            System.out.println("Onko geeni päällä? (true/false): ");
+            return Boolean.valueOf(lukija.nextLine());
+        }catch (Exception e){
+            System.out.println("vääränlainen arvo");
+            geeniStatus();
+            return false;
+        }
+    }
+    
+    private boolean eritetaanko(){
+        try{
+            System.out.println("Eritetäänkö ainetta solusta ympäristöön? (true/false): ");
+            return Boolean.valueOf(lukija.nextLine()); //tämä ei ilmeisesti heitä poikkeusta..? ainakakin kysely jatkuu
+        }catch (Exception e){
+            System.out.println("vääränlainen arvo");
+            eritetaanko();
+            return false;
+        }
+    }
+    
+    private double tuottoNopeus(){ // miksi tää haluaa noi returnit, ja ei tää muutenkaa toimi..
+        try {
+            System.out.println("Tuottonopeus (0.0-10.0): ");
+            if (Double.valueOf(lukija.nextLine()) >= 0.0 && Double.valueOf(lukija.nextLine()) <= 10.0){
+                return Double.valueOf(lukija.nextLine()); 
+            }else{
+                System.out.println("Annoit vääränkokoisen arvon");
+                tuottoNopeus();
+                return 0.0;
+            }
+        }catch (Exception e){
+            System.out.println("Syötteen on oltava numero");
+            tuottoNopeus();
+            return 0.0;
+        }
+    }
+            
+    private double hajotusNopeus(){
+        try {
+           System.out.println("Hajotusnopeus (0.0-10.0): ");
+            if (Double.valueOf(lukija.nextLine()) >= 0.0 && Double.valueOf(lukija.nextLine()) >= 10.0){
+                return Double.valueOf(lukija.nextLine()); 
+            }else{
+                System.out.println("Annoit vääränkokoisen arvon");
+                hajotusNopeus();
+                return 0.0;
+            }
+        }catch (Exception e){
+            System.out.println("Syötteen on oltava numero");
+            hajotusNopeus();
+            return 0.0;
+        }
+    }
+    
+    private double kynnysArvo(){
+        System.out.println("Kynnysarvo (0.0-10.0): ");
+        return Double.valueOf(lukija.nextLine());
+    }
+    
+    private Interaktio omaInteraktio(){
+        System.out.println("Ineraktio itsensä kanssa: ");
+        return Interaktio.valueOf(lukija.nextLine());
+    }
+    
        
-    private void kysyInteraktiot(){
+    private void kysyInteraktiot(){ //TODO aika paljon ny looppeja.. apumetodi?
         ArrayList<Aine> aineet = this.solu.getAineet();
         for (Aine a : aineet){
             for (Aine b : aineet){
                 if (a.equals(b) == false){
                     System.out.println("Miten " + b.getNimi() + "vaikuttaa aineeseen " + a.getNimi() + "?: ");
-                    Interaktio vaikutus = Interaktio.valueOf(lukija.nextLine());
-                    a.setInteraktio(b, vaikutus);
+                    try {
+                        Interaktio vaikutus = Interaktio.valueOf(lukija.nextLine());
+                        a.setInteraktio(b, vaikutus);
+                    }catch (Exception e){
+                       Interaktio vaikutus = Interaktio.EI;
+                       a.setInteraktio(b, vaikutus);
+                    }
                 }
             }
         }
@@ -132,17 +225,22 @@ public class Tekstikayttoliittyma {
         while (true){
             if (komento.equals("ei")) {
                 break;
-            }else{
+            }else if (komento.equals("kyllä")){
                 HashMap<String, Aine> map = solu.nimiMap();
                 System.out.println("Anna muokattavan aineen nimi: "); 
                 String nimi = lukija.nextLine();
                 Aine muokattava = map.get(nimi);
                 mitaMuokataan(muokattava);
+            }else if (komento.equals("lopeta")){
+                System.exit(0);
+            }else{
+                System.out.println("Ei ole validi syöte nyt ");
+                muokkaus();
             }
         }
     }
     
-    private void mitaMuokataan(Aine aine){
+    private void mitaMuokataan(Aine aine){ //TODO aineen muokkaaminen, jos ominaisuudet listaan, niin tämän toteutus erilainen..
         System.out.println("Mitä ominaisuutta haluat muokata?\n"
                 + "");
     }

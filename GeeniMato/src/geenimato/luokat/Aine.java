@@ -13,7 +13,7 @@ import java.util.Random;
  */
 
 
-public class Aine {
+public class Aine { //TODO kaikki todennäköisyydet muuttujiin
     
     private String nimi;
     private boolean geeni;

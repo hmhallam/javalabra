@@ -61,15 +61,11 @@ public class SoluTest {
     
     @Test
     public void kaikillaInteraktiot(){
-        boolean loytyykoNull = false;
         for (Aine a : aineet){
             for (Aine b : aineet){
-                if (a.getInteraktio(b) == null){
-                    loytyykoNull = true;
-                }
+                assertNotNull(a.getInteraktio(b));
             }
         }
-        assertFalse(loytyykoNull);
     }
     
     @Test
@@ -105,11 +101,11 @@ public class SoluTest {
         assertTrue(inhibitiot != 0 && aktivaatiot != 0);
     }
     
-    @Test
-    public void InteraktioidenSuhteet(){
-        //en tee tätä vielä, sillä haluan vaihdella suhteita
-    }
-    
+//    @Test
+//    public void InteraktioidenSuhteet(){
+//        //en tee tätä vielä, sillä haluan vaihdella suhteita
+//    }
+//    
     @Test
     public void kopioiUudetInstanssit(){ //TODO tän ei kuuluisi vielä toimia
         Solu solu2 = new Solu(0);
@@ -131,27 +127,23 @@ public class SoluTest {
     public void aineLisattyOikein(){ 
         Aine aine = new Aine("lisatty");
         solu.lisaaAine(aine);
-        boolean loytyykoNull = false;
         for (Aine a : solu.getAineet()){
             for (Aine b : solu.getAineet()){
-                if (a.getInteraktio(b) == null){
-                    loytyykoNull = true;
-                }
+                assertNotNull(a.getInteraktio(b));
             }
         }
-        assertFalse(loytyykoNull);
         assertTrue(solu.getAineet().size() == 11);
     }
     
-    @Test
-    public void yhdenGeeninStatusPalautusarvo(){ //testataan siis apumetodia
-        
-    }
-    
-    @Test
-    public void geenistatusMuuttuuOikein(){ //tähän paljon eri vaihtoehtoja..
-        
-    }
+//    @Test
+//    public void yhdenGeeninStatusPalautusarvo(){ //testataan siis apumetodia
+//        
+//    }
+//    
+//    @Test
+//    public void geenistatusMuuttuuOikein(){ //tähän paljon eri vaihtoehtoja..varman järkevä jakaa useampaan testiin
+//        
+//    }
     
     @Test
     public void proteiininTuotto(){

@@ -22,8 +22,11 @@ public class GeeniMato {
      */
     public static void main(String[] args) {
         
-        Aine aine = new Aine("nimi", false, false, 4.0, 3.0, 0.3, Interaktio.EI);
-        System.out.println(aine.toString());
+        Scanner lukija = new Scanner(System.in);
+        
+        Tekstikayttoliittyma kayttis = new Tekstikayttoliittyma(lukija);
+        
+        kayttis.kaynnista();
         
 //        Scanner lukija = new Scanner(System.in);
 //        

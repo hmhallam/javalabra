@@ -15,7 +15,7 @@ import org.junit.*;
  *
  * @author henriikka
  */
-public class AineTest {
+public class AineTest { //TODO magic numberit pois täältäki
     private Solu solu;
     private Random random;
     
@@ -83,7 +83,7 @@ public class AineTest {
      }
      
     @Test
-    public void yksittainenInteraktio(){
+    public void yksittainenInteraktio(){ //TODO eri konstruktoreille eri testit
         Aine aine1 = new Aine("nimi1");
         assertTrue(aine1.getInteraktio(aine1).equals(Interaktio.EI));
         Aine aine2 = new Aine("nimi2", random);
