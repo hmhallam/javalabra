@@ -95,7 +95,7 @@ public class Tekstikayttoliittyma {
         
     }
     
-    private void manuaalinen(){ //testaa kaikkien syötteiden oikeellisuus, koko juttu try-catchin sisään. Jaa metodia pienempiin osiin
+    private void manuaalinen(){ 
         this.solu = new Solu(0);
         try {
             while(true){
@@ -121,7 +121,7 @@ public class Tekstikayttoliittyma {
         boolean geeni = geeniStatus();
         boolean eritys = eritetaanko();     
         double tuotto = tuottoNopeus();
-        double hajotus = hajotusNopeus();
+        double hajotus = hajotusNopeus(tuotto);
         double kynnys = kynnysArvo();  
         Interaktio interaktio = omaInteraktio();
             
@@ -131,41 +131,67 @@ public class Tekstikayttoliittyma {
     
     private String kysyNimi(){ //voisi tarkistaa, onko solussa jo samannimistä..
         System.out.println("Anna nimi: ");
+        String komento = lukija.nextLine();
+        if (komento.equals("lopeta")){
+                System.exit(0);
+            }
+        for (Aine aine : solu.getAineet()){
+            if (komento.equals(aine.getNimi())){
+                System.out.println("Solussa on jo saman niminen aine.");
+                kysyNimi();
+            } 
+        }
         return lukija.nextLine(); 
     }
     
     private boolean geeniStatus(){
-        try{
-            System.out.println("Onko geeni päällä? (true/false): ");
-            return Boolean.valueOf(lukija.nextLine());
-        }catch (Exception e){
-            System.out.println("vääränlainen arvo");
+        System.out.println("Onko geeni päällä? (kyllä/ei): ");
+        String komento = lukija.nextLine();
+        if (komento.equals("kyllä")){
+            return true;
+        }
+        if (komento.equals("ei")){
+            return false;
+        }
+        if (komento.equals("lopeta")){
+                System.exit(0);
+        }
+            System.out.println("piti olla kyllä tai ei");
             geeniStatus();
             return false;
-        }
-    }
+    }     
+    
     
     private boolean eritetaanko(){
-        try{
-            System.out.println("Eritetäänkö ainetta solusta ympäristöön? (true/false): ");
-            return Boolean.valueOf(lukija.nextLine()); //tämä ei ilmeisesti heitä poikkeusta..? ainakakin kysely jatkuu
-        }catch (Exception e){
-            System.out.println("vääränlainen arvo");
-            eritetaanko();
+        System.out.println("Eritetäänkö ainetta solusta ympäristöön? (kyllä/ei): ");
+        String komento = lukija.nextLine();
+        if (komento.equals("kyllä")){
+            return true;
+        }
+        if (komento.equals("ei")){
             return false;
         }
+        if (komento.equals("lopeta")){
+                System.exit(0);
+        }
+            System.out.println("piti olla kyllä tai ei");
+            geeniStatus();
+            return false;
     }
     
     private double tuottoNopeus(){ // miksi tää haluaa noi returnit, ja ei tää muutenkaa toimi..
+        System.out.println("Tuottonopeus (0.0-10.0): ");
+        String komento = lukija.nextLine();
         try {
-            System.out.println("Tuottonopeus (0.0-10.0): ");
-            if (Double.valueOf(lukija.nextLine()) >= 0.0 && Double.valueOf(lukija.nextLine()) <= 10.0){
-                return Double.valueOf(lukija.nextLine()); 
-            }else{
+            if(komento.equals("lopeta")){
+                System.exit(0);
+            }
+            if (Double.valueOf(komento) >= 0.0 && Double.valueOf(komento) <= 10.0){
+                return Double.valueOf(komento); 
+            }
                 System.out.println("Annoit vääränkokoisen arvon");
                 tuottoNopeus();
                 return 0.0;
-            }
         }catch (Exception e){
             System.out.println("Syötteen on oltava numero");
             tuottoNopeus();
@@ -173,31 +199,61 @@ public class Tekstikayttoliittyma {
         }
     }
             
-    private double hajotusNopeus(){
+    private double hajotusNopeus(double tuotto){
+        double annettuTuotto = tuotto;
+        System.out.println("Tuottonopeutta pienempi hajotusnopeus (0.0-10.0): ");
+        String komento = lukija.nextLine();
         try {
-           System.out.println("Hajotusnopeus (0.0-10.0): ");
-            if (Double.valueOf(lukija.nextLine()) >= 0.0 && Double.valueOf(lukija.nextLine()) >= 10.0){
-                return Double.valueOf(lukija.nextLine()); 
-            }else{
-                System.out.println("Annoit vääränkokoisen arvon");
-                hajotusNopeus();
-                return 0.0;
+            if(komento.equals("lopeta")){
+                System.exit(0);
             }
+            if (Double.valueOf(komento) >= 0.0 && Double.valueOf(komento) <= 10.0 && Double.valueOf(komento) < annettuTuotto){
+                return Double.valueOf(komento); 
+            }
+            System.out.println("Annoit vääränkokoisen arvon");
+            hajotusNopeus(annettuTuotto);
+            return 0.0;  
         }catch (Exception e){
             System.out.println("Syötteen on oltava numero");
-            hajotusNopeus();
+            hajotusNopeus(annettuTuotto);
             return 0.0;
         }
     }
     
     private double kynnysArvo(){
         System.out.println("Kynnysarvo (0.0-10.0): ");
-        return Double.valueOf(lukija.nextLine());
+        String komento = lukija.nextLine();
+        try {
+            if(komento.equals("lopeta")){
+                System.exit(0);
+            }
+            if (Double.valueOf(komento) >= 0.0 && Double.valueOf(komento) <= 10.0){
+                return Double.valueOf(komento); 
+            }
+            System.out.println("Annoit vääränkokoisen arvon");
+            tuottoNopeus();
+            return 0.0;
+            
+        }catch (Exception e){
+            System.out.println("Syötteen on oltava numero");
+            tuottoNopeus();
+            return 0.0;
+        }
     }
     
     private Interaktio omaInteraktio(){
         System.out.println("Ineraktio itsensä kanssa: ");
-        return Interaktio.valueOf(lukija.nextLine());
+        String komento = lukija.nextLine();
+        try {
+             if(komento.equals("lopeta")){
+                System.exit(0);
+            }           
+            return Interaktio.valueOf(komento);  
+        }catch (Exception e){
+            System.out.println("Et antanut interaktiota, vaihtoehdot: [AKTIVAATIO], [INHIBITIO], [EI]");
+            omaInteraktio();
+            return Interaktio.EI;
+        }
     }
     
        
@@ -222,6 +278,9 @@ public class Tekstikayttoliittyma {
     public void muokkaus(){
         System.out.println("Haluatko muokata jonkin aineen ominaisuuksia? (kyllä/ei)");
         String komento = lukija.nextLine();
+        if (komento.equals("lopeta")){
+                System.exit(0);
+            }
         while (true){
             if (komento.equals("ei")) {
                 break;
@@ -240,9 +299,37 @@ public class Tekstikayttoliittyma {
         }
     }
     
-    private void mitaMuokataan(Aine aine){ //TODO aineen muokkaaminen, jos ominaisuudet listaan, niin tämän toteutus erilainen..
+    private void mitaMuokataan(Aine aine){ 
         System.out.println("Mitä ominaisuutta haluat muokata?\n"
-                + "");
+                + "Nimi\n"
+                + "Geenistatus\n"
+                + "Eritettävyys\n"
+                + "Tuottonopeus\n"
+                + "Hajotusnopeus\n"
+                + "Kynnysarvo\n"
+                + "Intertaktio\n");
+        String komento = lukija.nextLine();
+        if (komento.equals("lopeta")){
+                System.exit(0);
+        }
+        if (komento.equals("Geenistatus")){
+           aine.setGeeni(geeniStatus()); 
+        }
+        if (komento.equals("Eritettävyys")){
+            aine.setEritettava(eritetaanko());
+        }
+        if (komento.equals("Tuottonopeus")){
+            aine.setTuotto(tuottoNopeus());
+        }
+        if (komento.equals("Hajotusnopeus")){
+            aine.setHajotus(hajotusNopeus(aine.getTuotto()));
+        }
+        if (komento.equals("Kynnysarvo")){
+            aine.setKynnysarvo(kynnysArvo());
+        }
+        if (komento.equals("Intertaktio")){
+           //TODO pitää kysellä, minkä aineen kanssa interaktoidaan 
+        }
     }
 
     public void aikaaEteenPain(){

@@ -107,7 +107,7 @@ public class SoluTest {
 //    }
 //    
     @Test
-    public void kopioiUudetInstanssit(){ //TODO tän ei kuuluisi vielä toimia
+    public void kopioiUudetInstanssit(){ 
         Solu solu2 = new Solu(5);
         Aine aine = new Aine("nimi", false, true, 4.0, 3.0, 0.3, Interaktio.EI);
         solu.lisaaAine(aine);
