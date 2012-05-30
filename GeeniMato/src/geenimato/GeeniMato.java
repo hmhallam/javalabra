@@ -5,8 +5,6 @@
 package geenimato;
 
 import geenimato.kayttoliittyma.Tekstikayttoliittyma;
-import geenimato.luokat.Aine;
-import geenimato.luokat.Interaktio;
 import java.util.Scanner;
 
 

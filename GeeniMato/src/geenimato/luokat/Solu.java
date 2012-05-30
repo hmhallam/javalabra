@@ -106,7 +106,11 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
         ArrayList<Aine> eritettavat = new ArrayList<Aine>();
         for (Aine aine : aineet){
             if (aine.isEritettava()){
-                eritettavat.add(aine);
+                Aine aine2 = new Aine(aine.getNimi(),
+                        false, true, aine.getTuotto(), 
+                        aine.getHajotus(), aine.getKynnysarvo(),
+                        aine.getInteraktio(aine));
+                eritettavat.add(aine2);
             }
         }
         return eritettavat;

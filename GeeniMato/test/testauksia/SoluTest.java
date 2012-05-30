@@ -108,11 +108,11 @@ public class SoluTest {
 //    
     @Test
     public void kopioiUudetInstanssit(){ //TODO tän ei kuuluisi vielä toimia
-        Solu solu2 = new Solu(0);
+        Solu solu2 = new Solu(5);
         Aine aine = new Aine("nimi", false, true, 4.0, 3.0, 0.3, Interaktio.EI);
         solu.lisaaAine(aine);
         ArrayList<Aine> kopiot = solu.kopioiEritettavat();
-        assertTrue(kopiot.size() == 1);
+        assertTrue(kopiot.size() > 1);
         assertFalse(solu2.getAineet().get(0).equals(kopiot.get(0)));
         
     }
@@ -133,6 +133,15 @@ public class SoluTest {
             }
         }
         assertTrue(solu.getAineet().size() == 11);
+    }
+    
+    @Test public void tyhjaanSoluunLisaaminen(){
+        Solu solu2 = new Solu(0);
+        assertTrue(solu2.getAineet().isEmpty());
+        Aine aine = new Aine("nimi");
+        solu2.lisaaAine(aine);
+        assertTrue(solu2.getAineet().size() == 1);
+        
     }
     
 //    @Test
