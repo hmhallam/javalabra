@@ -70,9 +70,9 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
     private Interaktio randomInteraktio(){
         Random random = new Random();
         double luku = random.nextDouble();
-        if (luku <= 0.2){
+        if (luku <= 0.4){
             return Interaktio.INHIBITIO;
-        }else if (luku <= 0.4){
+        }else if (luku <= 0.8){
             return Interaktio.AKTIVAATIO;
         }else{
            return Interaktio.EI; 
