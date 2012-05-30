@@ -301,7 +301,6 @@ public class Tekstikayttoliittyma {
     
     private void mitaMuokataan(Aine aine){ 
         System.out.println("Mitä ominaisuutta haluat muokata?\n"
-                + "Nimi\n"
                 + "Geenistatus\n"
                 + "Eritettävyys\n"
                 + "Tuottonopeus\n"
