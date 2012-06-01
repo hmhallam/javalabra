@@ -70,11 +70,11 @@ public class Aine { //TODO kaikki todennäköisyydet muuttujiin
         this.nimi = nimi;
         this.interaktiot = new HashMap<Aine, Interaktio>();
         this.geeni = random.nextBoolean();
-        this.eritettava = eritetaanko(random);
+        this.eritettava = eritetaanko(random, 0.2);
         this.konsentraatio = 0;
         this.maksimikonsentraatio = 10.0;
-        this.tuotto = isompi(random);
-        this.hajotus = pienempi(this.tuotto, random);
+        this.tuotto = isompi(random, 0.3);
+        this.hajotus = pienempi(this.tuotto, random, 0.7, 0.2);
         this.kynnysarvo = 10*random.nextDouble();
         omaInteraktio(Interaktio.EI);
     }
@@ -84,8 +84,8 @@ public class Aine { //TODO kaikki todennäköisyydet muuttujiin
      * @param random tarvitaan arpomiseen, annettu jo konstruktorille parametrina
      * @return boolean, joka kertoo onko aine eritettävä
      */
-    private boolean eritetaanko(Random random){ //randomgenerointi tekee luokasta aika sotkuisen..
-        if (random.nextDouble() < 0.2){
+    private boolean eritetaanko(Random random, double kynnys){ 
+        if (random.nextDouble() < kynnys){
             return true;
         }else{
             return false;
@@ -96,9 +96,9 @@ public class Aine { //TODO kaikki todennäköisyydet muuttujiin
      * @param random tarvitaan arpomiseen
      * @return luku, joka on isompi kuin 0.3 ja alle 1
      */
-    private double isompi(Random random){
+    private double isompi(Random random, double kynnys){
         double luku = 0.0;
-        while (luku < 0.3){
+        while (luku < kynnys){
             luku = random.nextDouble();
         }
         return luku;
@@ -111,9 +111,9 @@ public class Aine { //TODO kaikki todennäköisyydet muuttujiin
      * @param random tarvitaan arpomiseen
      * @return luku, joka on pienempi kuin 0.7 ja tuotto.
      */
-    private double pienempi(double tuotto, Random random){
+    private double pienempi(double tuotto, Random random, double ylaraja, double erotus){
         double  luku = 1.0;
-        while (luku > tuotto || luku > 0.7 || tuotto-luku < 0.2){
+        while (luku > tuotto || luku > ylaraja || tuotto-luku < erotus){
             luku = random.nextDouble();
         }
         return luku;

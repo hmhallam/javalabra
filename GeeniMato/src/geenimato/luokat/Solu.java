@@ -18,6 +18,8 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
     
     private ArrayList<Aine> aineet;
     private int aika;
+    private double inhibitioTn;
+    private double aktivaatioTn;
     
     /** Solu sisältää aineita, jotka se voi luoda itse tai voi luoda tyhjän solun ja asettaa sinne aineita
      * 
@@ -26,6 +28,8 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
     public Solu(int aineidenMaara){
         this.aineet = luoAineet(aineidenMaara);
         this.aika = 0;
+        this.inhibitioTn = 0.25;
+        this.aktivaatioTn = 0.25;
     }
     
     /** Luo listan soluista ja täyttää sen aineilla, jotka luodaan käyttäen aineen random-konstruktoria
@@ -62,17 +66,19 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
     
     
     
-    /** interaktioarpoja, 20% ettei ineraktiota ole. Aktivaatiolla ja inhibitiolla yhtä suuret todennäköisyydet
+    /**Interaktioarpoja palauttaa annetuilla todennäköisyyksillä erilaisen interaktion
+     * Huom. Metodi ei tarkista lukujen oikellisuutta
      * 
-     * 
-     * @return Interaktio tietyillä todennäköisyyksillä
+     * @param inhibitiot inhibition todennäköisyys (0.0 -1.0);
+     * @param aktivaatiot aktivaation todennäköisyys (0.0 -1.0);
+     * @return Interaktio
      */
-    private Interaktio randomInteraktio(){
+    private Interaktio randomInteraktio(){ //TODO testit eivät mene läpi, jos magic numberit poistaa..
         Random random = new Random();
         double luku = random.nextDouble();
-        if (luku <= 0.4){
+        if (luku <= 0.25){
             return Interaktio.INHIBITIO;
-        }else if (luku <= 0.8){
+        }else if (luku <= (0.25 + 0.25)){
             return Interaktio.AKTIVAATIO;
         }else{
            return Interaktio.EI; 
@@ -98,11 +104,12 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
         return map;
     }
     
-    /**Antaa listan aineista, joita solu erittää
+    /**Antaa listan aineista, joita solu erittää. Aineet ovat uusia instansseja,
+     * joten niiden ominaisuuksia voi muokata alkuperäisistä riippumatta. 
      * 
      * @return ArrayList<Aine>
      */
-    public ArrayList<Aine> kopioiEritettavat(){ //TODO täytyy antaa eri instanssit
+    public ArrayList<Aine> kopioiEritettavat(){
         ArrayList<Aine> eritettavat = new ArrayList<Aine>();
         for (Aine aine : aineet){
             if (aine.isEritettava()){
@@ -201,22 +208,22 @@ public class Solu { //TODO interaktioiden suhteet talteen muuttujaan, helpottaa 
      * 
      * @return taulukko, jossa näkyy aineiden väliset interaktiot
      */
+
     
-    public String interaktioTaulukko(){ //TODO lyhennä metodia apumetodeilla
+    public String interaktioTaulukko(){ //TODO vakiokokoiset paikat taulukkoon, nyt nimen pituus siirtää komponentteja
         StringBuilder kasaaja = new StringBuilder();
-        kasaaja.append("     ");
+        kasaaja.append(String.format("%-7s", ""));
         for (Aine a : aineet){
-            kasaaja.append(a.getNimi());
+            kasaaja.append(String.format("%-7s", a.getNimi()));
         }
         kasaaja.append(" <- nuo vaikuttavat alariveillä oleviin");
         kasaaja.append("\n");
         for (Aine a : aineet){
-            kasaaja.append(a.getNimi());
-            kasaaja.append("  ");
+            kasaaja.append(String.format("%-7s", a.getNimi()));
             HashMap<Aine, Interaktio> lista = a.getInteraktiot();
             for (Aine b : aineet){
-                kasaaja.append(lista.get(b));
-                kasaaja.append("    ");
+                kasaaja.append(String.format("%-3s", "|"));
+                kasaaja.append(String.format("%-4s", lista.get(b)));
             }
             kasaaja.append("\n");
         }

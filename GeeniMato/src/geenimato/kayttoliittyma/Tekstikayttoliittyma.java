@@ -16,16 +16,17 @@ import org.jfree.ui.RefineryUtilities;
  *
  * @author hmhallam
  */
-public class Tekstikayttoliittyma {
+public class Tekstikayttoliittyma implements Kayttoliittyma{
     
     private Scanner lukija;
     private Solu solu;
     private Datankasittelija kasittelija;
     
-    public Tekstikayttoliittyma(Scanner lukija){
-        this.lukija = lukija;
+    public Tekstikayttoliittyma(){
+        this.lukija = new Scanner(System.in);
     }
     
+    @Override
     public void kaynnista(){
         System.out.println(alkunakyma());
         while(true){
@@ -36,7 +37,9 @@ public class Tekstikayttoliittyma {
             
             hoidaSolunLuonti(komento);
             this.kasittelija = new Datankasittelija(this.solu);
-            muokkaus();
+            if (solu.getAineet().size() > 0){
+                muokkaus();
+            }
             aikaaEteenPain();
             plottaa();
         }
@@ -75,7 +78,7 @@ public class Tekstikayttoliittyma {
     }
     
     private void arvotaan(){
-        System.out.println("Montako ainetta? (kokonaisluku)"); //TODO testaa syötteen oikeellisuus
+        System.out.println("Montako ainetta? (kokonaisluku)"); 
         try {
             int luku = Integer.parseInt(lukija.nextLine());
             if (luku >= 0){
@@ -85,12 +88,12 @@ public class Tekstikayttoliittyma {
             }else{
                 System.out.println("Annoit negatiivisen luvun, ei käy semmoinen");
                 arvotaan();
-            }
+            }           
             
         }catch (Exception e){
-            System.out.println("Kysyttiin kokonaislukua..");
+            System.out.println("Kysyttiin kokonaislukua.." + e);
             arvotaan();
-        }
+        }  
         
         
     }
@@ -109,7 +112,7 @@ public class Tekstikayttoliittyma {
             }
         } catch (Exception e){
             System.out.println("Vääränlainen syöte " + e);
-            manuaalinen(); //TODO nyt vain keskeytetään väärän syötteen kohdalla ja mennään takas alkuun
+            manuaalinen(); 
         }
             kysyInteraktiot();
             System.out.println(solu.toString());
@@ -129,7 +132,7 @@ public class Tekstikayttoliittyma {
         return aine;
     }
     
-    private String kysyNimi(){ //voisi tarkistaa, onko solussa jo samannimistä..
+    private String kysyNimi(){ 
         System.out.println("Anna nimi: ");
         String komento = lukija.nextLine();
         if (komento.equals("lopeta")){
@@ -207,7 +210,8 @@ public class Tekstikayttoliittyma {
             if(komento.equals("lopeta")){
                 System.exit(0);
             }
-            if (Double.valueOf(komento) >= 0.0 && Double.valueOf(komento) <= 10.0 && Double.valueOf(komento) < annettuTuotto){
+            if (Double.valueOf(komento) >= 0.0 && Double.valueOf(komento) <= 10.0 
+                    && Double.valueOf(komento) < annettuTuotto){
                 return Double.valueOf(komento); 
             }
             System.out.println("Annoit vääränkokoisen arvon");
@@ -257,7 +261,7 @@ public class Tekstikayttoliittyma {
     }
     
        
-    private void kysyInteraktiot(){ //TODO aika paljon ny looppeja.. apumetodi?
+    private void kysyInteraktiot(){ 
         ArrayList<Aine> aineet = this.solu.getAineet();
         for (Aine a : aineet){
             for (Aine b : aineet){
@@ -276,6 +280,7 @@ public class Tekstikayttoliittyma {
     }
     
     public void muokkaus(){
+        
         System.out.println("Haluatko muokata jonkin aineen ominaisuuksia? (kyllä/ei)");
         String komento = lukija.nextLine();
         if (komento.equals("lopeta")){
@@ -286,10 +291,16 @@ public class Tekstikayttoliittyma {
                 break;
             }else if (komento.equals("kyllä")){
                 HashMap<String, Aine> map = solu.nimiMap();
-                System.out.println("Anna muokattavan aineen nimi: "); 
-                String nimi = lukija.nextLine();
-                Aine muokattava = map.get(nimi);
-                mitaMuokataan(muokattava);
+                try{
+                   System.out.println("Anna muokattavan aineen nimi: "); 
+                    String nimi = lukija.nextLine();
+                    Aine muokattava = map.get(nimi);
+                    mitaMuokataan(muokattava); 
+                    muokkaus();
+                }catch (Exception e){
+                    System.out.println("Ainetta ei löydy");
+                    muokkaus();
+                }
             }else if (komento.equals("lopeta")){
                 System.exit(0);
             }else{
@@ -349,7 +360,7 @@ public class Tekstikayttoliittyma {
     }
     
     public void plottaa(){
-        Plotti plotti = new Plotti("loppuplot", kasittelija);
+        Plotti plotti = new Plotti("Kaikkien solun aineiden konsentraatiot", kasittelija);
         plotti.pack();
         RefineryUtilities.centerFrameOnScreen(plotti);
         plotti.setVisible(true);

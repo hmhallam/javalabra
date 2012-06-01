@@ -1,0 +1,299 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+
+<Form version="1.3" maxVersion="1.8" type="org.netbeans.modules.form.forminfo.JFrameFormInfo">
+  <NonVisualComponents>
+    <Component class="javax.swing.ButtonGroup" name="buttonGroup1">
+    </Component>
+  </NonVisualComponents>
+  <Properties>
+    <Property name="defaultCloseOperation" type="int" value="3"/>
+  </Properties>
+  <SyntheticProperties>
+    <SyntheticProperty name="formSizePolicy" type="int" value="1"/>
+  </SyntheticProperties>
+  <AuxValues>
+    <AuxValue name="FormSettings_autoResourcing" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_autoSetComponentName" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_generateFQN" type="java.lang.Boolean" value="true"/>
+    <AuxValue name="FormSettings_generateMnemonicsCode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_i18nAutoMode" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_layoutCodeTarget" type="java.lang.Integer" value="1"/>
+    <AuxValue name="FormSettings_listenerGenerationStyle" type="java.lang.Integer" value="0"/>
+    <AuxValue name="FormSettings_variablesLocal" type="java.lang.Boolean" value="false"/>
+    <AuxValue name="FormSettings_variablesModifier" type="java.lang.Integer" value="2"/>
+  </AuxValues>
+
+  <Layout>
+    <DimensionLayout dim="0">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" attributes="0">
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="lopetusnappi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="32767" attributes="0"/>
+                      <Component id="lisaysnappi" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Component id="valmis" min="-2" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" attributes="0">
+                              <EmptySpace min="12" pref="12" max="-2" attributes="0"/>
+                              <Group type="103" groupAlignment="0" attributes="0">
+                                  <Component id="hajotusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="kynnysLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="interaktioLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="nimiLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                                  <Component id="geeniStatusLabel" alignment="0" min="-2" max="-2" attributes="0"/>
+                              </Group>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tuottoLabel" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="0" attributes="0">
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="hajotusSlider" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="hajotusArvo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="tuottoSlider" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="tuottoArvo" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="geeniPaalle" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="geeniPois" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                          <Component id="interaktioValinat" alignment="0" min="-2" max="-2" attributes="0"/>
+                          <Component id="nimiKentta" min="-2" pref="107" max="-2" attributes="0"/>
+                          <Group type="102" alignment="0" attributes="0">
+                              <Component id="kynnysSlider" min="-2" max="-2" attributes="0"/>
+                              <EmptySpace max="-2" attributes="0"/>
+                              <Component id="kynnysNro" min="-2" max="-2" attributes="0"/>
+                          </Group>
+                      </Group>
+                      <EmptySpace pref="32" max="32767" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="jScrollPane2" alignment="2" min="-2" pref="136" max="-2" attributes="0"/>
+                          <Component id="lisatyt" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                  </Group>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+    <DimensionLayout dim="1">
+      <Group type="103" groupAlignment="0" attributes="0">
+          <Group type="102" alignment="1" attributes="0">
+              <EmptySpace max="-2" attributes="0"/>
+              <Group type="103" groupAlignment="0" attributes="0">
+                  <Group type="102" attributes="0">
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="nimiKentta" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="nimiLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="11" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="3" attributes="0">
+                          <Component id="geeniStatusLabel" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="geeniPaalle" alignment="3" min="-2" max="-2" attributes="0"/>
+                          <Component id="geeniPois" alignment="3" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="tuottoArvo" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="tuottoSlider" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="tuottoLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="hajotusArvo" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="hajotusLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="hajotusSlider" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="kynnysLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="kynnysSlider" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="kynnysNro" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace type="separate" max="-2" attributes="0"/>
+                      <Group type="103" groupAlignment="2" attributes="0">
+                          <Component id="interaktioLabel" alignment="2" min="-2" max="-2" attributes="0"/>
+                          <Component id="interaktioValinat" alignment="2" min="-2" max="-2" attributes="0"/>
+                      </Group>
+                      <EmptySpace min="-2" pref="28" max="-2" attributes="0"/>
+                  </Group>
+                  <Group type="102" alignment="0" attributes="0">
+                      <Component id="lisatyt" min="-2" max="-2" attributes="0"/>
+                      <EmptySpace max="-2" attributes="0"/>
+                      <Component id="jScrollPane2" max="32767" attributes="0"/>
+                      <EmptySpace pref="18" max="-2" attributes="0"/>
+                  </Group>
+              </Group>
+              <Group type="103" groupAlignment="3" attributes="0">
+                  <Component id="valmis" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lopetusnappi" alignment="3" min="-2" max="-2" attributes="0"/>
+                  <Component id="lisaysnappi" alignment="3" min="-2" max="-2" attributes="0"/>
+              </Group>
+              <EmptySpace max="-2" attributes="0"/>
+          </Group>
+      </Group>
+    </DimensionLayout>
+  </Layout>
+  <SubComponents>
+    <Component class="javax.swing.JButton" name="valmis">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Valmis"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="valmisActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JButton" name="lopetusnappi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lopeta"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lopetusnappiActionPerformed"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JFormattedTextField" name="nimiKentta">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aine1"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JSlider" name="tuottoSlider">
+      <Properties>
+        <Property name="minimum" type="int" value="30"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="tuottoSliderStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="hajotusSlider">
+      <Properties>
+        <Property name="maximum" type="int" value="70"/>
+      </Properties>
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="hajotusSliderStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JSlider" name="kynnysSlider">
+      <Events>
+        <EventHandler event="stateChanged" listener="javax.swing.event.ChangeListener" parameters="javax.swing.event.ChangeEvent" handler="kynnysSliderStateChanged"/>
+      </Events>
+    </Component>
+    <Component class="javax.swing.JLabel" name="tuottoLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Tuottonopeus"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="hajotusLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Hajotusnopeus"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="kynnysLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Kynnysarvo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JComboBox" name="interaktioValinat">
+      <Properties>
+        <Property name="maximumRowCount" type="int" value="3"/>
+        <Property name="model" type="javax.swing.ComboBoxModel" editor="org.netbeans.modules.form.editors2.ComboBoxModelEditor">
+          <StringArray count="3">
+            <StringItem index="0" value="Ei mit&#xe4;&#xe4;n"/>
+            <StringItem index="1" value="Inhibitio"/>
+            <StringItem index="2" value="Aktivaatio"/>
+          </StringArray>
+        </Property>
+        <Property name="cursor" type="java.awt.Cursor" editor="org.netbeans.modules.form.editors2.CursorEditor">
+          <Color id="Hand Cursor"/>
+        </Property>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="interaktioLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Interaktio"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="nimiLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Nimi"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="geeniStatusLabel">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Geeni p&#xe4;&#xe4;ll&#xe4;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="geeniPaalle">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="text" type="java.lang.String" value="kyll&#xe4;"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JRadioButton" name="geeniPois">
+      <Properties>
+        <Property name="buttonGroup" type="javax.swing.ButtonGroup" editor="org.netbeans.modules.form.RADComponent$ButtonGroupPropertyEditor">
+          <ComponentRef name="buttonGroup1"/>
+        </Property>
+        <Property name="selected" type="boolean" value="true"/>
+        <Property name="text" type="java.lang.String" value="ei"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="lisatyt">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Aineita lis&#xe4;tty"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JButton" name="lisaysnappi">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Lis&#xe4;&#xe4;"/>
+      </Properties>
+      <Events>
+        <EventHandler event="actionPerformed" listener="java.awt.event.ActionListener" parameters="java.awt.event.ActionEvent" handler="lisaysnappiActionPerformed"/>
+      </Events>
+    </Component>
+    <Container class="javax.swing.JScrollPane" name="jScrollPane2">
+      <AuxValues>
+        <AuxValue name="autoScrollPane" type="java.lang.Boolean" value="true"/>
+      </AuxValues>
+
+      <Layout class="org.netbeans.modules.form.compat2.layouts.support.JScrollPaneSupportLayout"/>
+      <SubComponents>
+        <Component class="javax.swing.JTextArea" name="lisatytAineet">
+          <Properties>
+            <Property name="columns" type="int" value="20"/>
+            <Property name="rows" type="int" value="5"/>
+          </Properties>
+        </Component>
+      </SubComponents>
+    </Container>
+    <Component class="javax.swing.JLabel" name="tuottoArvo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arvo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="hajotusArvo">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arvo"/>
+      </Properties>
+    </Component>
+    <Component class="javax.swing.JLabel" name="kynnysNro">
+      <Properties>
+        <Property name="text" type="java.lang.String" value="Arvo"/>
+      </Properties>
+    </Component>
+  </SubComponents>
+</Form>

@@ -4,6 +4,7 @@
  */
 package geenimato;
 
+import geenimato.kayttoliittyma.GUI;
 import geenimato.kayttoliittyma.Tekstikayttoliittyma;
 import java.util.Scanner;
 
@@ -20,15 +21,12 @@ public class GeeniMato {
      */
     public static void main(String[] args) {
         
-        Scanner lukija = new Scanner(System.in);
         
-        Tekstikayttoliittyma kayttis = new Tekstikayttoliittyma(lukija);
+        GUI kayttis = new GUI();
+        //Tekstikayttoliittyma kayttis = new Tekstikayttoliittyma();
         
         kayttis.kaynnista();
         
-//        Scanner lukija = new Scanner(System.in);
-//        
-//        Tekstikayttoliittyma liittyma = new Tekstikayttoliittyma(lukija);
-//        liittyma.kaynnista();
+
     }
 }
